@@ -5,9 +5,6 @@ project(procpoolpp VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 查找 Boost 依赖
-find_package(Boost REQUIRED COMPONENTS iostreams system filesystem)
-
 # 查找 Babylon 依赖
 set(BUILD_DEPS ON)
 
@@ -28,12 +25,9 @@ target_include_directories(${PROJECT_NAME} INTERFACE
     ${Boost_INCLUDE_DIRS}
 )
 
-# 链接 Babylon 和 Boost 依赖
-target_link_libraries(${PROJECT_NAME} INTERFACE 
+# 链接 Babylon
+target_link_libraries(${PROJECT_NAME} INTERFACE
     babylon
-    Boost::iostreams
-    Boost::system
-    Boost::filesystem
 )
 
 # 添加示例（可选）
